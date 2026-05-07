@@ -56,54 +56,20 @@ Se instalan desde `requirements.txt` (incluye, entre otras, `customtkinter` y `P
 
 ---
 
-## Instalación (paso a paso)
-### 1) Clona el repositorio
+## Instalación y ejecución (Windows / PowerShell)
+Desde la **raíz del proyecto**, ejecútalo **sí o sí** así (copy/paste):
 
-```bash
-git clone https://github.com/AldairBZ/BlacJack-Proyecto-COBOL.git
-cd BlacJack-Proyecto-COBOL
-```
-
-### 2) Crea y activa un entorno virtual (recomendado)
-En PowerShell:
-
-```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-```
-
-### 3) Instala dependencias de Python
-
-```powershell
-python -m pip install -r requirements.txt
-```
-
-### 4) Instala GnuCOBOL
-- Asegúrate de que `cobc` esté disponible en tu sistema.
-- Si lo instalas en `C:\GnuCOBOL`, el script `run_blackjack.ps1` lo detectará automáticamente para esa ejecución.
-
----
-
-## Ejecución (paso a paso)
-### Opción A (recomendada): script automático
-En PowerShell, desde la raíz del proyecto:
-
-```powershell
-.\run_blackjack.ps1
-```
-
-Si tu sistema bloquea scripts (ExecutionPolicy), ejecútalo **sin cambiar la política global**:
-
-```powershell
+```powershell (Ejecutar como administrador primero)
+py -3 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
 powershell -NoProfile -ExecutionPolicy Bypass -File .\run_blackjack.ps1
 ```
 
-### Opción B: manual (compilar y luego lanzar UI)
+### Notas importantes
+- El script `run_blackjack.ps1` **requiere** que exista `.venv` (usa `.\.venv\Scripts\python.exe`).
+- Debes tener **GnuCOBOL** instalado para que exista el comando `cobc`.
+  - Si lo instalas en `C:\GnuCOBOL`, el script intentará configurarlo automáticamente para esa sesión.
 
-```powershell
-cobc -x -free backend\blackjack.cob.cbl -o backend\bin\blackjack_runtime.exe
-python Frontend\app.py
-```
 
 ### Qué crea/usa al arrancar
 - Si no existe, se crea `DATA/`.

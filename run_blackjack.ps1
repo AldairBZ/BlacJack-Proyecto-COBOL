@@ -2,7 +2,7 @@ Set-Location $PSScriptRoot
 
 $backendSource = "backend\blackjack.cob.cbl"
 $backendExe = "backend\bin\blackjack_runtime.exe"
-$pythonExe = "python"
+$pythonExe = ".\.venv\Scripts\python.exe"
 $gnuCobolRoot = "C:\GnuCOBOL"
 
 if (Test-Path $gnuCobolRoot) {
@@ -16,8 +16,13 @@ if (Test-Path $gnuCobolRoot) {
     }
 }
 
-if (Test-Path ".venv\Scripts\python.exe") {
-    $pythonExe = ".\.venv\Scripts\python.exe"
+if (!(Test-Path $pythonExe)) {
+    Write-Host "No se encontró el venv en .venv."
+    Write-Host "Ejecuta estos comandos desde la raíz del proyecto y vuelve a intentar:"
+    Write-Host "  py -3 -m venv .venv"
+    Write-Host "  .\.venv\Scripts\python.exe -m pip install -r requirements.txt"
+    Write-Host "  powershell -NoProfile -ExecutionPolicy Bypass -File .\run_blackjack.ps1"
+    exit 1
 }
 
 if (!(Test-Path "backend\bin")) {
