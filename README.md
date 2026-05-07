@@ -58,8 +58,8 @@ Se instalan desde `requirements.txt` (incluye, entre otras, `customtkinter` y `P
 
 ## Instalación y ejecución (Windows / PowerShell)
 Desde la **raíz del proyecto**, ejecútalo **sí o sí** así (copy/paste):
-
-```powershell (Ejecutar como administrador primero)
+(Ejecutar como administrador primero)
+```powershell
 py -3 -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
 powershell -NoProfile -ExecutionPolicy Bypass -File .\run_blackjack.ps1
